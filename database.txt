@@ -43,7 +43,7 @@ Ordine:
 		data acquisto 
 		data partenza
 		data arrivo
-		
+
 		codice prenotazione...
 		
 
@@ -64,5 +64,11 @@ CREATE TABLE `high_flight`.`utente` (
 SQL script was successfully applied to the database.
 
 
+CREATE TABLE `high_flight`.`servizi` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `mezzo` VARCHAR(10) NOT NULL,
+  `prezzo` DOUBLE NOT NULL,
+  `disponibile` TINYINT NULL DEFAULT 1,
+  PRIMARY KEY (`id`));
 
 
