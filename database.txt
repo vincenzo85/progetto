@@ -1,0 +1,48 @@
+utente: 
+		id
+		nome
+		cognome
+		codice fiscale
+		fiscale
+		username
+		password
+		id_ruolo (foreign key) => ruolo
+		
+			
+
+ruolo:
+		id (one to one)
+		ruolo (stringa) [ admin user affiliati]
+
+		
+		
+
+(aereo treno auto)
+
+Servizi: (da rivedere)
+		id
+		tipo servizio ( aereo, treno, auto)
+		prezzo ( double )
+		disponibile (booleano)
+		
+
+
+
+(insieme di mezzi prenotati, n servizi 1 pacchetto + servizi .... )
+Pacchetti: one to many ... 
+		id
+		id_servizi => foreing key 
+		
+		
+
+		
+
+Ordine:
+		id
+		id_utente => foreign key utente 
+		id_pacchetto => foreign key pacchetto
+		codice prenotazione...
+		
+
+
+
