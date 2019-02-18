@@ -19,7 +19,7 @@ ruolo:
 
 (aereo treno auto)
 
-Servizi: (da rivedere)
+Servizio: (da rivedere)
 		id
 		tipo servizio ( aereo, treno, auto)
 		prezzo ( double )
@@ -29,8 +29,8 @@ Servizi: (da rivedere)
 
 
 (insieme di mezzi prenotati, n servizi 1 pacchetto + servizi .... )
-Pacchetti: one to many ... 
-		id
+Join tra ordine e servizi: one to many ... 
+		id_ordine => foreing key
 		id_servizi => foreing key 
 		
 		
@@ -40,9 +40,29 @@ Pacchetti: one to many ...
 Ordine:
 		id
 		id_utente => foreign key utente 
-		id_pacchetto => foreign key pacchetto
+		data acquisto 
+		data partenza
+		data arrivo
+		
 		codice prenotazione...
 		
+
+query generazione utente 
+Executing:
+CREATE TABLE `high_flight`.`utente` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(25) NOT NULL,
+  `cognome` VARCHAR(25) NOT NULL,
+  `codicefiscale` VARCHAR(11) NOT NULL,
+  `username` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  `id_ruolo` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC) VISIBLE,
+  UNIQUE INDEX `codicefiscale_UNIQUE` (`codicefiscale` ASC) VISIBLE);
+
+SQL script was successfully applied to the database.
+
 
 
 
