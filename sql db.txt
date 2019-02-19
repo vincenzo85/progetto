@@ -151,3 +151,5 @@ ADD CONSTRAINT `id_service`
   REFERENCES `high_flight`.`servizio` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+ALTER TABLE `high_flight`.`ordine` 
+CHANGE COLUMN `data_acquisto` `data_acquisto` TIMESTAMP NULL DEFAULT NULL ;
