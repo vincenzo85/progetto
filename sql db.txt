@@ -52,3 +52,102 @@ CHANGE COLUMN `data_acquisto` `data_acquisto` DATETIME NULL DEFAULT NULL ,
 CHANGE COLUMN `data_arrivo` `data_arrivo` DATETIME NULL DEFAULT NULL ;
 
 
+altero tabella utente con la foreing KEY
+Executing:
+ALTER TABLE `high_flight`.`utente` 
+ADD INDEX `id_ruolo_idx` (`id_ruolo` ASC);
+ALTER TABLE `high_flight`.`utente` 
+ADD CONSTRAINT `id_ruolo`
+  FOREIGN KEY (`id_ruolo`)
+  REFERENCES `high_flight`.`ruolo` (`id_ruolo`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+SQL script was successfully applied to the database.
+
+altero la tabella ordine per la foreing key 
+
+ALTER TABLE `high_flight`.`ordine` 
+ADD INDEX `id_utente_idx` (`id_utente` ASC);
+ALTER TABLE `high_flight`.`ordine` 
+ADD CONSTRAINT `id_utente`
+  FOREIGN KEY (`id_utente`)
+  REFERENCES `high_flight`.`utente` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+altero la tabella ordine per collegarla con order to service
+
+  ALTER TABLE `high_flight`.`ordine` 
+ADD INDEX `order_to_service_idx` (`id_ordertoservice` ASC);
+ALTER TABLE `high_flight`.`ordine` 
+ADD CONSTRAINT `order_to_service`
+  FOREIGN KEY (`id_ordertoservice`)
+  REFERENCES `high_flight`.`order_to_service` (`id_order`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+Executing:
+ALTER TABLE `high_flight`.`order_to_service` 
+CHANGE COLUMN `id_service` `id_service` INT(11) NOT NULL ,
+DROP PRIMARY KEY;
+
+Operation failed: There was an error while applying the SQL script to the database.
+ERROR 1025: Error on rename of '.\high_flight\#sql-55d4_b' to '.\high_flight\order_to_service' (errno: 150 - Foreign key constraint is incorrectly formed)
+SQL Statement:
+ALTER TABLE `high_flight`.`order_to_service` 
+CHANGE COLUMN `id_service` `id_service` INT(11) NOT NULL ,
+DROP PRIMARY KEY
+
+
+ALTER TABLE `high_flight`.`order_to_service` 
+ADD INDEX `order_to_service_idx` (`id_service` ASC);
+ALTER TABLE `high_flight`.`order_to_service` 
+ADD CONSTRAINT `order_to_service`
+  FOREIGN KEY (`id_service`)
+  REFERENCES `high_flight`.`servizio` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+Executing:
+ALTER TABLE `high_flight`.`order_to_service` 
+ADD INDEX `order_to_service_idx` (`id_service` ASC);
+ALTER TABLE `high_flight`.`order_to_service` 
+ADD CONSTRAINT `order_to_service`
+  FOREIGN KEY (`id_service`)
+  REFERENCES `high_flight`.`servizio` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+Operation failed: There was an error while applying the SQL script to the database.
+ERROR 1022: Can't write; duplicate key in table '#sql-55d4_b'
+SQL Statement:
+ALTER TABLE `high_flight`.`order_to_service` 
+ADD CONSTRAINT `order_to_service`
+  FOREIGN KEY (`id_service`)
+  REFERENCES `high_flight`.`servizio` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION
+
+  ALTER TABLE `high_flight`.`ordine` 
+DROP FOREIGN KEY `order_to_service`;
+ALTER TABLE `high_flight`.`ordine` 
+DROP INDEX `order_to_service_idx` ;
+
+tolgo la primary key 
+ALTER TABLE `high_flight`.`order_to_service` 
+DROP PRIMARY KEY;
+
+ALTER TABLE `high_flight`.`order_to_service` 
+ADD INDEX `id_ordine_idx` (`id_order` ASC);
+ALTER TABLE `high_flight`.`order_to_service` 
+ADD CONSTRAINT `id_ordine`
+  FOREIGN KEY (`id_order`)
+  REFERENCES `high_flight`.`ordine` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+ADD CONSTRAINT `id_service`
+  FOREIGN KEY (`id_service`)
+  REFERENCES `high_flight`.`servizio` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
