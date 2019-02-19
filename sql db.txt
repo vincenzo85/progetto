@@ -1,0 +1,43 @@
+sql che crea lo schema
+
+CREATE SCHEMA `hight_fight` ;
+
+sql che crea la tabella utenti
+
+CREATE TABLE `high_flight`.`utente` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  `cognome` VARCHAR(45) NULL,
+  `codicefiscale` VARCHAR(45) NULL,
+  `username` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `id_ruolo` INT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `codicefiscale_UNIQUE` (`codicefiscale` ASC),
+  UNIQUE INDEX `username_UNIQUE` (`username` ASC));
+
+sql order to service
+
+CREATE TABLE `high_flight`.`order_to_service` (
+  `id_order` INT NOT NULL,
+  `id_service` INT NULL,
+  PRIMARY KEY (`id_order`));
+
+
+sql che crea tabella ruolo
+
+CREATE TABLE `high_flight`.`ruolo` (
+  `id_ruolo` INT NOT NULL AUTO_INCREMENT,
+  `ruolo` VARCHAR(45) NULL,
+  PRIMARY KEY (`id_ruolo`));
+
+sql che crea la tabella servizio
+
+CREATE TABLE `servizio` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mezzo` varchar(10) NOT NULL,
+  `prezzo` double NOT NULL,
+  `disponibile` tinyint(4) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
