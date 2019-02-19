@@ -156,3 +156,10 @@ CHANGE COLUMN `data_acquisto` `data_acquisto` TIMESTAMP NULL DEFAULT NULL ;
 
 
 .....
+inseriti i ruoli 
+
+
+INSERT INTO `high_flight`.`ruolo` (`ruolo`) VALUES ('mministratore');
+INSERT INTO `high_flight`.`ruolo` (`ruolo`) VALUES ('utente');
+INSERT INTO `high_flight`.`ruolo` (`ruolo`) VALUES ('tour operator');
+
