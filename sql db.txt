@@ -41,3 +41,14 @@ CREATE TABLE `servizio` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+altero lo schema
+ALTER SCHEMA `high_flight`  DEFAULT CHARACTER SET utf32  DEFAULT COLLATE utf32_general_ci ;
+
+altero tabella ordine
+
+ALTER TABLE `high_flight`.`ordine` 
+CHANGE COLUMN `data_partenza` `data_partenza` DATETIME NULL DEFAULT NULL AFTER `id_ordertoservice`,
+CHANGE COLUMN `data_acquisto` `data_acquisto` DATETIME NULL DEFAULT NULL ,
+CHANGE COLUMN `data_arrivo` `data_arrivo` DATETIME NULL DEFAULT NULL ;
+
+
