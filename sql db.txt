@@ -153,3 +153,6 @@ ADD CONSTRAINT `id_service`
   ON UPDATE NO ACTION;
 ALTER TABLE `high_flight`.`ordine` 
 CHANGE COLUMN `data_acquisto` `data_acquisto` TIMESTAMP NULL DEFAULT NULL ;
+
+
+.....
