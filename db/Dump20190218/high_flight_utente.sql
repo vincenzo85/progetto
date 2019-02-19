@@ -16,30 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `ordine`
+-- Table structure for table `utente`
 --
 
-DROP TABLE IF EXISTS `ordine`;
+DROP TABLE IF EXISTS `utente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `ordine` (
+CREATE TABLE `utente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_utente` int(11) NOT NULL,
-  `id_ordertoservice` int(11) DEFAULT NULL,
-  `data_acquisto` date DEFAULT NULL,
-  `data_partenza` date DEFAULT NULL,
-  `data_arrivo` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `nome` varchar(25) NOT NULL,
+  `cognome` varchar(25) NOT NULL,
+  `codicefiscale` varchar(11) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `id_ruolo` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `codicefiscale_UNIQUE` (`codicefiscale`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ordine`
+-- Dumping data for table `utente`
 --
 
-LOCK TABLES `ordine` WRITE;
-/*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
+LOCK TABLES `utente` WRITE;
+/*!40000 ALTER TABLE `utente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-02-18 17:40:34
+-- Dump completed on 2019-02-18 17:39:41
