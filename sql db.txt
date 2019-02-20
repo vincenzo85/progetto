@@ -163,3 +163,5 @@ INSERT INTO `high_flight`.`ruolo` (`ruolo`) VALUES ('mministratore');
 INSERT INTO `high_flight`.`ruolo` (`ruolo`) VALUES ('utente');
 INSERT INTO `high_flight`.`ruolo` (`ruolo`) VALUES ('tour operator');
 
+ALTER TABLE `high_flight`.`ordine` 
+DROP COLUMN `id_ordertoservice`;
