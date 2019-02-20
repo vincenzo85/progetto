@@ -163,5 +163,22 @@ INSERT INTO `high_flight`.`ruolo` (`ruolo`) VALUES ('mministratore');
 INSERT INTO `high_flight`.`ruolo` (`ruolo`) VALUES ('utente');
 INSERT INTO `high_flight`.`ruolo` (`ruolo`) VALUES ('tour operator');
 
+
+
+-------------------------- modifiche al db ----------------------------
+
 ALTER TABLE `high_flight`.`ordine` 
 DROP COLUMN `id_ordertoservice`;
+
+
+ALTER TABLE `high_flight`.`utente` 
+ADD COLUMN `email` VARCHAR(45) NULL AFTER `id_ruolo`,
+ADD UNIQUE INDEX `email_UNIQUE` (`email` ASC);
+
+
+ALTER TABLE `high_flight`.`utente` 
+CHANGE COLUMN `codicefiscale` `codicefiscale` VARCHAR(45) NOT NULL ;
+
+----------------------------------------------------------------------
+
+
