@@ -182,3 +182,12 @@ CHANGE COLUMN `codicefiscale` `codicefiscale` VARCHAR(45) NOT NULL ;
 ----------------------------------------------------------------------
 
 
+------------------------- inserimento campo token ---------------------
+
+
+ALTER TABLE `high_flight`.`utente` 
+ADD COLUMN `token` VARCHAR(150) NULL AFTER `email`;
+
+
+-----------------------------------------------------------------------
+
